@@ -1,9 +1,10 @@
 package com.buka.exercise2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.buka.exercise2.models.Car;
 import com.buka.exercise2.utils.CarArrayListGenerator;
@@ -27,20 +28,20 @@ public class MainActivity extends AppCompatActivity {
 
         // Faça estes passos dentro do MainActivity.java
         // TODO: Passo 6 - Apague as linhas de código abaixo que usam a TextView, já que usará RecyclerView
-        TextView carsTextView = findViewById(R.id.textview_cars);
-
-        String allCars = "";
-
-        for (int i = 0; i < cars.size(); i++) {
-            Car car = cars.get(i);
-            allCars = allCars + " " +  car.getManufacturer() + " " + car.getModel() + " " + car.getYear() + "\n";
-        }
-
-        carsTextView.setText(allCars);
+        // APAGADOS!!
 
         // TODO: Passo 7 - Obtenha a referência para o RecyclerView
+        RecyclerView carsRecyclerView = findViewById(R.id.recyclerview_cars);
+
         // TODO: Passo 8 - Instancie um LinearLayoutManager vertical e atribua ao RecyclerView
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        carsRecyclerView.setLayoutManager(linearLayoutManager);
+
         // TODO: Passo 9 - Instancie o Adapter e atribua ao RecyclerView
+        CarsAdapter carsAdapter = new CarsAdapter();
+        carsRecyclerView.setAdapter(carsAdapter);
+
         // TODO: Passo 10 - Passe a ArrayList de carros para o adapter afim de que sejam exibidos na lista
+        carsAdapter.setCars(cars);
     }
 }
